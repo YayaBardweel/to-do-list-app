@@ -16,19 +16,26 @@ class _TodoTitleState extends State<TodoTitle> {
 
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.only(left: 20,right: 20,top:20),
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
             color: Colors.deepOrangeAccent,
-            borderRadius: BorderRadius.circular(20)),
+            borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 5,
+            )
+          ],),
+
         child: Row(
           children: [
             Checkbox(
                 value: done, onChanged: (bool? value) {
                   setState(() {
                     done = value ?? false;
-
                   });
             },activeColor: Colors.green, ),
             Text(
@@ -38,7 +45,7 @@ class _TodoTitleState extends State<TodoTitle> {
                 fontWeight: FontWeight.bold,
                 decoration: done ? TextDecoration.lineThrough : null,
                 decorationColor: Colors.black,
-                decorationThickness: 3,
+                decorationThickness: 2,
                 fontSize: 20,
 
               ),

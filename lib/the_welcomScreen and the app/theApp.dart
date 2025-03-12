@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/util/dialog_box.dart';
 import 'package:untitled1/util/todo_title.dart';
 
 import '../materl/text.dart';
@@ -12,6 +13,16 @@ class TheApp extends StatefulWidget {
 
 class _TheAppState extends State<TheApp> {
   @override
+  //text Controller
+  final _controller = TextEditingController();
+
+  void crateNewTask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return dialogbox(controller: _controller);
+        });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -23,14 +34,15 @@ class _TheAppState extends State<TheApp> {
         backgroundColor: Colors.orange,
         actions: [
           IconButton(
-              icon: Icon(Icons.add, size: 30, color: Colors.black45),
-              onPressed: () {})
+              icon: Icon(Icons.add, size: 30, color: Colors.yellow),
+              onPressed: crateNewTask)
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: crateNewTask
+        ,
         child: Icon(Icons.add,size: 30),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.yellowAccent,
 
       ),
       backgroundColor: Colors.orangeAccent,

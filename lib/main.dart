@@ -20,6 +20,11 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
         showSemanticsDebugger: false,
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.light(
+            primary: Colors.orange,
+          )
+        ),
         initialRoute: 'WelcomeScreen',
         routes: {
           'WelcomeScreen': (context) => WelcomeScreen(),
