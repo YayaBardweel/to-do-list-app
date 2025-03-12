@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/the_welcomScreen_and_login/theApp.dart';
-import 'package:untitled1/the_welcomScreen_and_login/welcomScreen.dart';
+import 'package:untitled1/the_welcomScreen%20and%20the%20app/theApp.dart';
+import 'the_welcomScreen and the app/welcomScreen.dart';
 
 void main() {
 
@@ -23,7 +23,7 @@ class _MainAppState extends State<MainApp> {
         initialRoute: 'WelcomeScreen',
         routes: {
           'WelcomeScreen': (context) => WelcomeScreen(),
-          'todolist': (context) => todolist()
+          'todolist': (context) => TheApp()
         });
   }
 }
