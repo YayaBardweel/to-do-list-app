@@ -35,7 +35,7 @@ class _TheAppState extends State<TheApp> {
       ),
       backgroundColor: Colors.orangeAccent,
       body: ListView(
-        children: [TodoTitle(),TodoTitle(),TodoTitle()],
+        children: [TodoTitle(to_do_text: "hello"),TodoTitle(to_do_text: "do math"),TodoTitle(to_do_text: "clean the house")],
       ),
     );
   }
