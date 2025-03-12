@@ -30,7 +30,7 @@ class _TodoTitleState extends State<TodoTitle> {
                     done = value ?? false;
 
                   });
-            }),
+            },activeColor: Colors.green, ),
             Text(
               widget.to_do_text,
               style: TextStyle(
