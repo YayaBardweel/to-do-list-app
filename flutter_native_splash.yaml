@@ -1,0 +1,9 @@
+flutter_native_splash:
+  color: "#FFA500" # Background color
+  image: assetsLottie/todoit_960x960_circle.png # Ensure this image has padding
+  android: true
+  ios: true
+  android_12:
+    color: "#FFA500"
+    image: assetsLottie/todoit_960x960_circle.png # Ensure this image has padding
+
