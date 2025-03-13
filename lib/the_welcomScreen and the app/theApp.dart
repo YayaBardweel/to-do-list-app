@@ -15,12 +15,19 @@ class _TheAppState extends State<TheApp> {
   @override
   //text Controller
   final _controller = TextEditingController();
+  void SaveNewTask(){
+setState(() {
+
+});
+  }
 
   void crateNewTask() {
     showDialog(
         context: context,
         builder: (context) {
-          return dialogbox(controller: _controller);
+          return dialogbox(controller: _controller,
+            onsaved: SaveNewTask,
+            Canceled: Navigator.of(context).pop);
         });
   }
   Widget build(BuildContext context) {
@@ -47,7 +54,7 @@ class _TheAppState extends State<TheApp> {
       ),
       backgroundColor: Colors.orangeAccent,
       body: ListView(
-        children: [TodoTitle(to_do_text: "hello"),TodoTitle(to_do_text: "do math"),TodoTitle(to_do_text: "clean the house")],
+        children: [TodoTitle(to_do_text: "hello")],
       ),
     );
   }
