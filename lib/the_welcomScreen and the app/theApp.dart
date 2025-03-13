@@ -12,6 +12,7 @@ class TheApp extends StatefulWidget {
 }
 
 class _TheAppState extends State<TheApp> {
+  List<String> items = List.generate(5, (index) => 'Item ${index + 1}');
   @override
   //text Controller
   final _controller = TextEditingController();
@@ -50,9 +51,38 @@ class _TheAppState extends State<TheApp> {
 
       ),
       backgroundColor: Colors.orangeAccent,
-      body: ListView(
-        children: [TodoTitle(to_do_text: "hello"),TodoTitle(to_do_text: "do math"),TodoTitle(to_do_text: "clean the house")],
-      ),
+      body: ListView.builder(
+         itemCount: items.length,
+         itemBuilder: (context, index) {
+           final item = items[index];
+
+           return Dismissible(
+             key: Key(item),
+             direction: DismissDirection.endToStart,
+             onDismissed: (direction) {
+               setState(() {
+                 items.removeAt(index);
+               });
+
+               ScaffoldMessenger.of(context).showSnackBar(
+                   SnackBar(content: Text('$item deleted')),
+               );
+             },
+             background: Container(
+               color: Colors.red,
+               alignment: Alignment.centerRight,
+               padding: EdgeInsets.symmetric(horizontal: 20),
+               child: Icon(Icons.delete, color: Colors.white),
+             ),
+
+             child: ListTile(
+               title: Text(item),
+             ),
+
+
+           );
+         },
+    ),
     );
   }
 }
