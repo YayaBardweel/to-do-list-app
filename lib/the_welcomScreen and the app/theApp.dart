@@ -16,11 +16,15 @@ class _TheAppState extends State<TheApp> {
   //text Controller
   final _controller = TextEditingController();
 
+  void SaveNewTask(){
+
+  }
+
   void crateNewTask() {
     showDialog(
         context: context,
         builder: (context) {
-          return dialogbox(controller: _controller);
+          return dialogbox(controller: _controller,Canceled: Navigator.of(context).pop,onsaved: SaveNewTask,);
         });
   }
   Widget build(BuildContext context) {
