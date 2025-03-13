@@ -46,7 +46,7 @@ class _TheAppState extends State<TheApp> {
           style: textType(Colors.white70, 30, FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.deepOrangeAccent,
         actions: [
           IconButton(
               icon: Icon(Icons.add, size: 30, color: Colors.yellow),
@@ -55,7 +55,7 @@ class _TheAppState extends State<TheApp> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: crateNewTask,
-        child: Icon(Icons.add, size: 30),
+        child: Icon(Icons.add, size: 30,color: Colors.black,),
         backgroundColor: Colors.yellowAccent,
       ),
       body: ListView.builder(
