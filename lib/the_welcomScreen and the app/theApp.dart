@@ -40,7 +40,9 @@ class _TheAppState extends State<TheApp> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
+         automaticallyImplyLeading: false,
         title: Text(
           "Your list",
           style: textType(Colors.white70, 30, FontWeight.bold),
