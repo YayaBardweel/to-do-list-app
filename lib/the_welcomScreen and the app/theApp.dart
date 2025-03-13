@@ -14,8 +14,7 @@ class TheApp extends StatefulWidget {
 
 class _TheAppState extends State<TheApp> {
   // List of todo
-  List<List<dynamic>> toDoList = [
-  ];
+  List<List<dynamic>> toDoList = [];
   @override
   // Text Controller
   final _controller = TextEditingController();
@@ -62,7 +61,26 @@ class _TheAppState extends State<TheApp> {
       body: ListView.builder(
           itemCount: toDoList.length,
           itemBuilder: (context, index) {
-            return TodoTitle(to_do_text: toDoList[index][0]);
+            final item = toDoList[index];
+            return Dismissible(
+                  key: Key(item[0]),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) {
+                    setState(() {
+                      toDoList.removeAt(index);
+                    });
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('${item[0]} deleted')),
+                    );
+                  },
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Icon(Icons.delete, color: Colors.white),
+                  ),
+                  child: TodoTitle(to_do_text: toDoList[index][0]));
           }),
       backgroundColor: Colors.orange,
     );
