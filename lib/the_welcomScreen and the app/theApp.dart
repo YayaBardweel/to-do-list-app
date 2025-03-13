@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:untitled1/util/dialog_box.dart';
 import 'package:untitled1/util/todo_title.dart';
 
@@ -12,20 +13,30 @@ class TheApp extends StatefulWidget {
 }
 
 class _TheAppState extends State<TheApp> {
-  List<String> items = List.generate(5, (index) => 'Item ${index + 1}');
+  // List of todo
+  List<List<dynamic>> toDoList = [
+  ];
   @override
-  //text Controller
+  // Text Controller
   final _controller = TextEditingController();
 
-  void SaveNewTask(){
-
+  void SaveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
   }
 
   void crateNewTask() {
     showDialog(
         context: context,
         builder: (context) {
-          return dialogbox(controller: _controller,Canceled: Navigator.of(context).pop,onsaved: SaveNewTask,);
+          return dialogbox(
+            controller: _controller,
+            Canceled: Navigator.of(context).pop,
+            onsaved: SaveNewTask,
+          );
         });
   }
   Widget build(BuildContext context) {
@@ -44,45 +55,16 @@ class _TheAppState extends State<TheApp> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: crateNewTask
-        ,
-        child: Icon(Icons.add,size: 30),
+        onPressed: crateNewTask,
+        child: Icon(Icons.add, size: 30),
         backgroundColor: Colors.yellowAccent,
-
       ),
-      backgroundColor: Colors.orangeAccent,
       body: ListView.builder(
-         itemCount: items.length,
-         itemBuilder: (context, index) {
-           final item = items[index];
-
-           return Dismissible(
-             key: Key(item),
-             direction: DismissDirection.endToStart,
-             onDismissed: (direction) {
-               setState(() {
-                 items.removeAt(index);
-               });
-
-               ScaffoldMessenger.of(context).showSnackBar(
-                   SnackBar(content: Text('$item deleted')),
-               );
-             },
-             background: Container(
-               color: Colors.red,
-               alignment: Alignment.centerRight,
-               padding: EdgeInsets.symmetric(horizontal: 20),
-               child: Icon(Icons.delete, color: Colors.white),
-             ),
-
-             child: ListTile(
-               title: Text(item),
-             ),
-
-
-           );
-         },
-    ),
+          itemCount: toDoList.length,
+          itemBuilder: (context, index) {
+            return TodoTitle(to_do_text: toDoList[index][0]);
+          }),
+      backgroundColor: Colors.orange,
     );
   }
 }
